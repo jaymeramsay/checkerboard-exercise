@@ -2,43 +2,36 @@ window.onload = function () {
   myCode();
 }
 
-function myCode() {
-  console.log('booyah');
-}
-//create element
-let square;
-let container;
+//create container element to hold all of my squares
+let container = document.getElementsByTagName('body')[0];
+
+//generate square divs
 for (let i = 0; i < 63; i++) {
-  // make it look like a square
-  square = document.createElement('div');
-  square.addEventListener('click', function (ev) {
-    console.log(ev.target);
-    console.log('HEY I WAS CLICKED');
-    console.log(square);
-
-  })
-  if (i % 2 === 0) {
-    decorateSquare(square, "tomato");
-  }
-  else {
-    decorateSquare(square, "black");
-  }
-
-  container = document.getElementsByTagName('body')[0];
-  //add it to the DOM
-  //find something to append to
-  //append to that thing
-  container.append(square);
+  // make square divs
+  let square = document.createElement('div');
+  //append them to the container
+  container.appendChild(square);
+  //decorate them within the loop so they can all change at once. no need to create a second, separate for loop
+  decorateSquare(square);
 }
 
+//create function to decorate square colors randomly
+function randomColors(sq) {
+  //I want each square's background color to set to a random color
+  //loop through the squares and assign color
+  for (let i = 0; i < 63; i++) {
+    //create a variable to hold the randomly changing colors. RGB.
+    let hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+    //set backgroundColor to variable
+    sq.style.backgroundColor = hue;
+  }
+}
+
+//create function to actually decorate the squares in JS. NOT CSS!
 function decorateSquare(sq, color) {
   sq.style.width = "11.1%";
   sq.style.paddingBottom = "11.1%";
-  sq.style.backgroundColor = color;
-  // sq.style.border = "1px solid white";
   sq.style.float = "left";
+  sq.style.display = "inlineblock";
+  sq.style.backgroundColor = randomColors(sq);
 }
-
-
-
-console.log(square);
