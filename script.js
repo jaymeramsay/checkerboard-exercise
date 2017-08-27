@@ -13,11 +13,17 @@ for (let i = 0; i < 63; i++) {
   decorateSquare(square);
 }
 
+function changeColors(sq) {
+  let hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  sq.style.backgroundColor = hue;
+}
+
 //create function to actually decorate the squares in JS. NOT CSS!
 function decorateSquare(sq, color) {
   sq.style.width = "11.1%";
   sq.style.paddingBottom = "11.1%";
   sq.style.float = "left";
   sq.style.display = "inlineblock";
-  sq.style.background = 'linear-gradient(45deg, red, blue)'
+  sq.style.background = changeColors(sq);
+  window.setInterval(changeColors, 2000, sq);
 }
