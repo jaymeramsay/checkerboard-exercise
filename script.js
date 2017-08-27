@@ -27,3 +27,6 @@ function decorateSquare(sq, color) {
   sq.style.background = changeColors(sq);
   window.setInterval(changeColors, 2000, sq);
 }
+
+let audio = new Audio('http://cdn.anything2mp3.com/system/files/mp3/Planet%20Claire%20%28original%20by%20%27The%20B52%27s%27%29_185254497_soundcloud.mp3');
+audio.play();
